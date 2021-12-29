@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-demo
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: go-demo
+  template:
+    metadata:
+      labels:
+        name: go-demo
+    spec:
+      containers:
+      - name: application
+        image: rakshitbharti/golang-api:demo-api
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8110
